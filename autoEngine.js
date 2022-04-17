@@ -166,6 +166,7 @@ function borderCol() {
     }
     if (player.y + player.h >= canvas.height - engine.tuneBottom) {
         player.y = canvas.height - player.h - engine.tuneBottom;
+        player.vy = 0;
         player.g = true;
     }
 }
