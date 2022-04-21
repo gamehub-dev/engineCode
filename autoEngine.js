@@ -71,7 +71,7 @@ let border = new CanvasBorder(3, 'black')
 
 
 class Engine {
-    constructor(p, g, b, bc, ox, oy, o, rc, c, is, tb, tt, tl, tr) {
+    constructor(p, g, b, bc, ox, oy, o, rc, c, is, tb, tt, tl, tr, bw, bbc) {
         this.playerMovement = p;
         this.gravity = g;
         this.borderWalls = b;
@@ -86,9 +86,11 @@ class Engine {
         this.tuneTop = tt;
         this.tuneLeft = tl;
         this.tuneRight = tr;
+        this.borderWidth = bw;
+        this.borderColor = bbc;
     }
 }
-let engine = new Engine(false, false, false, false, false, false, false, false, false, '', 0, 0, 0, 0)
+let engine = new Engine(false, false, false, false, false, false, false, false, false, '', 0, 0, 0, 0, 2, 'black')
 
 // end of classes
 
@@ -113,9 +115,9 @@ const height = window.innerHeight; // the height of the document
 const width = window.innerWidth; // the width of the document
 const interval = setInterval; // create an interval
 const doc = document;
-let rand;
 function random(max, min) {
     rand = Math.floor(Math.random() * (max - min + 1)) + min
+    return(rand)
 }
 // generate random number and control the maximum and minimum by typing 'random(1 // min, 10 // max)'
 // if you individually hide each bar, then you will have to reverse both variable values to show scroll bars.
@@ -302,12 +304,8 @@ setInterval(function MainEngineInterval() {
         cl("DistanceY From 'pointA.y' (" + pointA.y + ")" + " to 'pointB.y' (" + pointB.y + ") is: " + DistanceY + "px")
     }
     doc.body.style.backgroundColor = bgc
-    function EngineVersion() {
-        cl('The current Engine version that you have installed is:')
-        cl('Version 2.3.1')
-    }
     if (engine.borderWalls) {
-        canvas.style.border = border.width + 'px solid ' + border.colour
+        canvas.style.border = engine.borderWidth + 'px solid ' + engine.borderColor
     }
     if (engine.gravity) {
         if (player.g == false) {
@@ -315,7 +313,29 @@ setInterval(function MainEngineInterval() {
         }
     }
 })
+function distanceX(x1, x2) {
+    x2 = x2 - x1;
+    return(x2)
+}
+function distanceY(y1, y2) {
+    y2 = y2 - y1;
+    return(y2)
+}
+function EngineVersion() {
+    cl('The current Engine version that you have installed is:')
+    cl('Version 2.3.1')
+}
+let tag;
+function createElement(Element, ID, text){
+    tag = document.createElement(Element);
+    if (text != undefined) tag.innerHTML = text;
+    tag.id = ID;
+    document.body.appendChild(tag);
+    document.getElementById(ID).style = "position:absolute;";
+    document.getElementById(ID).style.left = "0px";
+    document.getElementById(ID).style.top = "0px";
+}
 canvas.width = width - 30;
 canvas.height = height - 30;
-cl("autoEngine.js Loaded Succesfully")
-cl("Built by using autoEngine.js")
+cl("autoEngine.js Loaded Succesfully");
+cl("Built by using autoEngine.js");
