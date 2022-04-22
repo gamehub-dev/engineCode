@@ -71,7 +71,7 @@ let border = new CanvasBorder(3, 'black')
 
 
 class Engine {
-    constructor(p, g, b, bc, ox, oy, o, rc, c, is, tb, tt, tl, tr, bw, bbc) {
+    constructor(p, g, b, bc, ox, oy, o, rc, c, is, tb, tt, tl, tr, bw, bbc, i) {
         this.playerMovement = p;
         this.gravity = g;
         this.borderWalls = b;
@@ -88,9 +88,10 @@ class Engine {
         this.tuneRight = tr;
         this.borderWidth = bw;
         this.borderColor = bbc;
+        this.i = i;
     }
 }
-let engine = new Engine(false, false, false, false, false, false, false, false, false, '', 0, 0, 0, 0, 2, 'black')
+let engine = new Engine(false, false, false, false, false, false, false, false, false, '', 0, 0, 0, 0, 2, 'black', 0)
 
 // end of classes
 
@@ -334,6 +335,14 @@ function createElement(Element, ID, text){
     document.getElementById(ID).style = "position:absolute;";
     document.getElementById(ID).style.left = "0px";
     document.getElementById(ID).style.top = "0px";
+}
+
+function cloneElement(ID) {
+    engine.i++;
+    let elem = document.querySelector(ID);
+    let clone = elem.cloneNode(true);
+    clone.id = ID + engine.i;
+    elem.after(clone);
 }
 canvas.width = width - 30;
 canvas.height = height - 30;
