@@ -339,7 +339,7 @@ function createElement(Element, ID, text){
 
 function cloneElement(ID) {
     engine.i++;
-    let elem = document.querySelector(ID);
+    let elem = document.querySelector("#" + ID);
     let clone = elem.cloneNode(true);
     clone.id = ID + engine.i;
     elem.after(clone);
