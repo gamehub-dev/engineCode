@@ -344,6 +344,9 @@ function cloneElement(ID) {
     clone.id = ID + engine.i;
     elem.after(clone);
 }
+function removeElement(ID){
+    doc.getElementById(ID).remove()
+}
 canvas.width = width - 30;
 canvas.height = height - 30;
 cl("autoEngine.js Loaded Succesfully");
