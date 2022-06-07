@@ -116,6 +116,7 @@ const height = window.innerHeight; // the height of the document
 const width = window.innerWidth; // the width of the document
 const interval = setInterval; // create an interval
 const doc = document;
+const parse = parseInt;
 function random(max, min) {
     rand = Math.floor(Math.random() * (max - min + 1)) + min
     return(rand)
@@ -313,6 +314,8 @@ setInterval(function MainEngineInterval() {
             player.vy += player.mass
         }
     }
+    height = window.innerHeight; // the height of the document
+    width = window.innerWidth; // the width of the document
 })
 function distanceX(x1, x2) {
     x2 = x2 - x1;
