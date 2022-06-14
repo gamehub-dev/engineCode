@@ -350,6 +350,14 @@ function cloneElement(ID) {
 function removeElement(ID){
     doc.getElementById(ID).remove()
 }
+function contains(stringOrVar, Includes) {
+    let int = stringOrVar.toLowerCase()
+    if (int.includes(Includes)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 canvas.width = width - 30;
 canvas.height = height - 30;
 cl("autoEngine.js Loaded Succesfully");
