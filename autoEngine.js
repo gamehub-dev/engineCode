@@ -32,7 +32,7 @@
 
 // classes
 class Player {
-    constructor(x, y, vy, vxl, vxr, w, h, s, j, f, g, c, i) {
+    constructor(x, y, vy, vxl, vxr, w, h, s, j, f, g, c, i, sob) {
         this.x = x;
         this.y = y;
         this.vy = vy;
@@ -46,9 +46,10 @@ class Player {
         this.g = g;
         this.c = c;
         this.img = i;
+        this.standingOnBorder = sob;
     }
 }
-let player = new Player(100, 100, 0, 0, 0, 50, 50, 5, 15, 0.2, false, "black", false)
+let player = new Player(100, 100, 0, 0, 0, 50, 50, 5, 15, 0.2, false, "black", false, false);
 
 
 class CalcDistanceX {
@@ -172,7 +173,8 @@ function borderCol() {
         player.y = canvas.height - player.h - engine.tuneBottom;
         player.vy = 0;
         player.g = true;
-    }
+        player.standingOnBorder = true;
+    }else{player.standingOnBorder = false;}
 }
 
 // how to use:
