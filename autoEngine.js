@@ -159,7 +159,7 @@ let DistanceY;
 engine.playerMovement = true;
 // end
 
-function borderCol() {
+function engineBorderCol() {
     if (player.x <= canvas.width - canvas.width + engine.tuneLeft) {
         player.x = canvas.width - canvas.width + engine.tuneLeft;
     }
@@ -195,7 +195,7 @@ function AllowPlayerMovement() {
         player.x += player.vxr
         player.y += player.vy
         if (engine.borderCollision) {
-            borderCol()
+            engineBorderCol()
         }
         if (engine.collision) {
             collision()
@@ -211,7 +211,7 @@ function AllowImgMovement() {
         player.x += player.vxr
         player.y += player.vy
         if (engine.borderCollision) {
-            borderCol()
+            engineBorderCol()
         }
         if (engine.collision) {
             collision()
